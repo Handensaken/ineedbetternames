@@ -4,8 +4,8 @@ namespace Snake
 {
     public class FoodSpawner
     {
-        public static Point foodPoint = new Point(0,0);
-        public void SpawnFood()
+        public static Point foodPoint = new Point(0,0); //the point the food will spawn on
+        public void SpawnFood() //finds a random position, that is not inside the snake, to place food
         {
             bool locationLimit = false;
             while (!locationLimit)

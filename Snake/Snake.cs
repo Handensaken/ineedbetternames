@@ -7,27 +7,27 @@ namespace Snake
 
     public class Snake
     {
-        FoodSpawner foodSpawner = new FoodSpawner();
-
-        Program ugly = new Program();
-        public enum Directions
+        public enum Directions  //an enum for keeping track of directions
         {
             up,
             down,
             right,
             left
         }
+        FoodSpawner foodSpawner = new FoodSpawner();
         Directions direction = Directions.right;
         public static Point currentPosition = new Point(0, 0);
         public static Point previousPosition = new Point(0, 0);
         int iIndex = 0;
         int jIndex = 0;
+        //I trust people know how to declare variables and classes
 
-        public static List<Tail> tail = new List<Tail>();
+        public static List<Tail> tail = new List<Tail>(); //a list to keep track of the tail
 
         public void Update()
         {
 
+            //changes the direction based on input
             if (Raylib.IsKeyPressed(KeyboardKey.KEY_A) && direction != Directions.left && direction != Directions.right || Raylib.IsKeyPressed(KeyboardKey.KEY_LEFT) && direction != Directions.left && direction != Directions.right)
             {
                 direction = Directions.left;
@@ -45,12 +45,7 @@ namespace Snake
                 direction = Directions.up;
             }
 
-            if (Raylib.IsKeyPressed(KeyboardKey.KEY_E))
-            {
-                tail.Add(new Tail());
-                System.Console.WriteLine("pressed e");
-            }
-
+            //moves the snake by setting the position to a point in the grid.
             switch (direction)
             {
                 case Directions.up:
@@ -75,10 +70,10 @@ namespace Snake
                     }
             }
 
-
+            //kills snake if hitting the outer edges
             if (iIndex < 0)
             {
-                iIndex = 0; /*Will kill snake when I can be fucked*/
+                iIndex = 0;
                 Program.gameScreen = Program.GameScreens.Gameover;
             };
             if (iIndex > 39)
@@ -96,15 +91,15 @@ namespace Snake
                 jIndex = 39;
                 Program.gameScreen = Program.GameScreens.Gameover;
             }
-
-            previousPosition = currentPosition;
+            
+            previousPosition = currentPosition;//sets previous position to the current position right before changing the current position
             currentPosition = Grid.grid[iIndex, jIndex];
-            if (currentPosition == FoodSpawner.foodPoint)
+            if (currentPosition == FoodSpawner.foodPoint) //adds length to the snake if food is eaten
             {
                 tail.Add(new Tail());
                 foodSpawner.SpawnFood();
             }
-            foreach (Tail tail in tail)
+            foreach (Tail tail in tail) //kills snake if hit own tail
             {
                 if (currentPosition == tail.currentPos)
                 {
@@ -112,7 +107,7 @@ namespace Snake
                 }
             }
         }
-        public void Draw()
+        public void Draw() //yay colors
         {
             Raylib.DrawRectangle(currentPosition.x, currentPosition.y, 19, 19, Color.GREEN);
         }
