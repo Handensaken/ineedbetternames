@@ -28,19 +28,19 @@ namespace Snake
         {
 
             //changes the direction based on input
-            if (Raylib.IsKeyPressed(KeyboardKey.KEY_A) && direction != Directions.left && direction != Directions.right || Raylib.IsKeyPressed(KeyboardKey.KEY_LEFT) && direction != Directions.left && direction != Directions.right)
+            if (Raylib.IsKeyDown(KeyboardKey.KEY_A) && direction != Directions.left && direction != Directions.right || Raylib.IsKeyDown(KeyboardKey.KEY_LEFT) && direction != Directions.left && direction != Directions.right)
             {
                 direction = Directions.left;
             }
-            else if (Raylib.IsKeyPressed(KeyboardKey.KEY_D) && direction != Directions.left && direction != Directions.right || Raylib.IsKeyPressed(KeyboardKey.KEY_RIGHT) && direction != Directions.left && direction != Directions.right)
+            else if (Raylib.IsKeyDown(KeyboardKey.KEY_D) && direction != Directions.left && direction != Directions.right || Raylib.IsKeyDown(KeyboardKey.KEY_RIGHT) && direction != Directions.left && direction != Directions.right)
             {
                 direction = Directions.right;
             }
-            else if (Raylib.IsKeyPressed(KeyboardKey.KEY_S) && direction != Directions.down && direction != Directions.up || Raylib.IsKeyPressed(KeyboardKey.KEY_DOWN) && direction != Directions.down && direction != Directions.up)
+            else if (Raylib.IsKeyDown(KeyboardKey.KEY_S) && direction != Directions.down && direction != Directions.up || Raylib.IsKeyDown(KeyboardKey.KEY_DOWN) && direction != Directions.down && direction != Directions.up)
             {
                 direction = Directions.down;
             }
-            else if (Raylib.IsKeyPressed(KeyboardKey.KEY_W) && direction != Directions.down && direction != Directions.up || Raylib.IsKeyPressed(KeyboardKey.KEY_UP) && direction != Directions.down && direction != Directions.up)
+            else if (Raylib.IsKeyDown(KeyboardKey.KEY_W) && direction != Directions.down && direction != Directions.up || Raylib.IsKeyDown(KeyboardKey.KEY_UP) && direction != Directions.down && direction != Directions.up)
             {
                 direction = Directions.up;
             }
